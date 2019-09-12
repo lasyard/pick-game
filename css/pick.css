@@ -1,0 +1,152 @@
+body {
+	margin: 0!important;
+	padding: 0!important;
+	background-color: rgb(197, 224, 180)!important;
+	font: 18px Arial bold;
+}
+
+div#container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+}
+
+div#banner {
+	width: 100%;
+	max-height: 15%!important;
+}
+
+div#new-game-button {
+	max-width: 10%;
+	float: left;
+}
+
+div#new-game-button input {
+	height: 100%;
+	width: 100%;
+}
+
+div#app-logo {
+	max-width: 23%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#app-logo img {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+div#smiley {
+	max-width: 10%;
+	float: left;
+}
+
+div#smiley img {
+	height: 100%;
+	width: 100%;
+}
+
+div#total-label {
+	color: red;
+	font-family: Magneto;
+	max-width: 18%;
+	float: right;
+}
+
+div#help-button {
+	max-width: 10%;
+	float: right;
+}
+
+div#help-button input {
+	height: 100%;
+	width: 100%;
+}
+
+div#pick-board {
+	width: 95%;
+	height: 75%;
+}
+
+div#pick-board table {
+	width: 100%;
+	height: 100%;
+}
+
+div#pick-board table tr.chessman-row {
+	height: 85%;
+}
+
+div#pick-board table tr.number-row {
+	height: 20px;
+}
+
+div#pick-board table tr td {
+	vertical-align: bottom;
+}
+
+div#pick-board table tr td div {
+	border: 3px solid #AA0000;
+	border-radius: 20px;
+	margin: 3px;
+}
+
+div#shadow {
+	background-color: black;
+	opacity: 0.6;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+div.pick-dialog {
+	color: #FFFF88;
+	background-color: #338833;
+	display: none;
+	position: absolute;
+	max-height: 30%;
+	max-width: 60%;
+	top: 30%;
+	bottom: 30%;
+	left: 15%;
+	right: 15%;
+	margin: auto;
+	border: 9px solid yellow;
+	border-radius: 25px;
+	padding: 20px;
+}
+
+div.pick-dialog p {
+	font-family: SimHei;
+	text-align: center;
+}
+
+div#help-info p {
+	font-size: 16px;
+}
+
+div#win-info p, div#lose-info p {
+	font-size: 46px;
+}
+
+img#splash {
+	display: block;
+	position: absolute;
+	max-height: 30%;
+	max-width: 50%;
+	top: 30%;
+	bottom: 30%;
+	left: 20%;
+	right: 20%;
+	margin: auto;
+	border: 9px solid red;
+	border-radius: 25px;
+	padding: 15px;
+}

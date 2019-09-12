@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<title>Pick</title>
+<script type="text/javascript" src="js/rand.js"></script>
+<script type="text/javascript" src="js/blink.js"></script>
+<script type="text/javascript" src="js/pick.js"></script>
+<link rel="stylesheet" href="css/pick.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+<div id="container">
+<div id="banner">
+<div id="new-game-button"><input type="image" src="icons/hand_128px.png" id="new-game"></input></div>
+<div id="smiley"><img id="sign-image" src="icons/smiley_128px.png" /></div>
+<div id="help-button"><input type="image" src="icons/help_128px.png"></input></div>
+<div id="total-label"></div>
+<div id="app-logo"><img src="icons/pick-128px.png" /></div>
+</div>
+<div style="clear:both;height:5%"></div>
+<div id="pick-board"></div>
+</div>
+<div id="shadow"></div>
+<div id="help-info" class="pick-dialog">
+<p>玩家和计算机轮流从任一堆中抓取任意个棋子</p>
+<p>取走最后一个者赢</p>
+<p>单击棋子取走本身和它上面的所有棋子</p>
+</div>
+<div id="win-info" class="pick-dialog">
+<p>你赢了！</p>
+</div>
+<div id="lose-info" class="pick-dialog">
+<p>你输了！</p>
+</div>
+<script type="text/javascript" charset="utf-8">
+function showDialog(dlgId, closeFun) {
+	var shadow = document.getElementById('shadow');
+	var dlg = document.getElementById(dlgId);
+	shadow.style.display = 'block';
+	dlg.style.display = 'block';
+	window.onclick = function() {
+		shadow.style.display = 'none';
+		dlg.style.display = 'none';
+		window.onclick = function() { };
+		if (typeof(closeFun) == 'function') closeFun();
+	};
+}
+
+window.onload = function() {
+	var helpButton = document.getElementById('help-button');
+	window.onresize = function() {
+		var height = helpButton.clientHeight-10;
+		document.getElementById('total-label').style.fontSize = height+'px';
+	};
+	window.onresize();
+	var pick = new Pick('pick-board', 'total-label', function(s) {
+		showDialog(s ? 'win-info' : 'lose-info', function() { pick.newGame(); });
+	}, function(s) {
+		var img = document.getElementById('sign-image');
+		if (s > 0) {
+			img.src = 'icons/smiley_winking_128px.png';
+		} else if (s < 0) {
+			img.src = 'icons/smiley_sad_128px.png';
+		} else {
+			img.src = 'icons/smiley_128px.png';
+		}
+	});
+	document.getElementById('new-game').onclick = function() { pick.newGame(); };
+	pick.newGame();
+	helpButton.onclick = function(e) {
+		showDialog('help-info');
+		e.stopPropagation();
+	};
+};
+</script>
+</body>
+
+</html>
